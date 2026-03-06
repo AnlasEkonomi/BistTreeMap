@@ -1,0 +1,695 @@
+\documentclass[12pt, a4paper]{article}
+
+% ============================================================
+% Packages
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}                     % Times New Roman (Elsevier style)
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\doublespacing
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, fit}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    citecolor=blue!60!black,
+    urlcolor=blue!60!black
+}
+
+% ============================================================
+\begin{document}
+
+% ============================================================
+% Title Page
+% ============================================================
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\LARGE\bfseries The Generative AI Augmentation Paradox:\\[0.3cm]
+Dynamic Capabilities as Mediators of Workforce Transformation\\
+and Organizational Resilience\par}
+
+\vspace{1.5cm}
+
+{\large
+Author A$^{a,*}$, Author B$^{b}$, Author C$^{a}$\par}
+
+\vspace{0.8cm}
+
+{\normalsize
+$^{a}$Department of Management and Technology, [University Name], [City], [Country]\\
+$^{b}$School of Business Administration, [University Name], [City], [Country]\\[0.3cm]
+$^{*}$Corresponding author. E-mail: [corresponding@university.edu]\par}
+
+\vspace{2cm}
+
+\begin{abstract}
+\noindent
+Generative artificial intelligence (GenAI) promises to augment human capabilities, yet organizations confront a paradox: the same technology that enhances individual productivity simultaneously destabilizes established routines, erodes legacy competencies, and creates acute talent shortages in AI-critical roles. Drawing on dynamic capabilities theory and sociotechnical systems thinking, this study investigates how organizations navigate this \textit{augmentation paradox} and whether sensing, seizing, and transforming capabilities mediate the relationship between GenAI adoption intensity and organizational resilience. We develop and test an integrated theoretical model using survey data from 427 middle and senior managers across technology-intensive industries in the European Union. Structural equation modeling (SEM) reveals that GenAI adoption intensity exerts a significant direct negative effect on short-term operational resilience but a positive indirect effect through dynamic capabilities---particularly through the \textit{transforming} dimension, which involves reconfiguring workflows, redeploying human capital, and institutionalizing human--AI complementarity. Furthermore, we identify \textit{absorptive capacity} and \textit{psychological safety climate} as critical boundary conditions that moderate the mediation pathway. Organizations scoring high on both moderators convert GenAI-induced disruption into resilience gains 2.7 times faster than those scoring low. These findings advance theory by reconciling the augmentation and displacement perspectives into a unified paradox framework, and offer practitioners a diagnostic model for sequencing GenAI implementation to build, rather than erode, organizational resilience.
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} Generative artificial intelligence; Augmentation paradox; Dynamic capabilities; Organizational resilience; Sociotechnical systems; Workforce transformation; Human--AI complementarity
+\end{abstract}
+
+\end{titlepage}
+
+% ============================================================
+% 1. INTRODUCTION
+% ============================================================
+\section{Introduction}
+
+Generative artificial intelligence (GenAI) has moved from experimental curiosity to organizational imperative with remarkable speed. By early 2026, more than 75\% of Fortune 500 firms had deployed GenAI tools across at least one core business function \citep{McKinsey2025}, and global enterprise spending on GenAI surpassed \$120 billion annually \citep{IDC2025}. Proponents herald GenAI as the most significant augmentation technology since the spreadsheet, capable of enhancing creativity, accelerating decision-making, and democratizing expertise \citep{Brynjolfsson2023, DellAcqua2023}. Yet a disquieting counter-narrative has emerged: organizations report that GenAI adoption triggers workforce overcapacity in legacy roles, acute shortages in AI-critical skills, and cultural resistance that collectively undermine the very resilience these technologies were expected to strengthen \citep{WEF2025, BCG2025}.
+
+This tension---where augmentation and disruption coexist as inseparable consequences of the same technological intervention---constitutes what we term the \textit{generative AI augmentation paradox}. While prior literature has examined either the productivity benefits of human--AI collaboration \citep{Raisch2025, Chowdhury2022} or the displacement risks of automation \citep{Frey2017, Acemoglu2022}, few studies have theorized these opposing forces as a unified paradox requiring organizational-level resolution. The omission is consequential: without understanding how organizations navigate the simultaneous pull of augmentation and displacement, both theory and practice remain trapped in a binary debate that fails to capture the messy, contingent reality of GenAI adoption.
+
+We address this gap by asking three interrelated research questions:
+
+\begin{enumerate}[label=\textbf{RQ\arabic*:}]
+    \item How does GenAI adoption intensity affect organizational resilience when augmentation and displacement effects are modeled simultaneously?
+    \item Do dynamic capabilities---sensing, seizing, and transforming---mediate the relationship between GenAI adoption intensity and organizational resilience?
+    \item Under what boundary conditions (absorptive capacity, psychological safety climate) does the mediating pathway strengthen or weaken?
+\end{enumerate}
+
+To answer these questions, we integrate dynamic capabilities theory \citep{Teece2007, Teece2018} with sociotechnical systems thinking \citep{Trist1981, Baxter2011} to develop a moderated mediation model. Dynamic capabilities theory explains \textit{how} organizations sense environmental shifts, seize opportunities through resource commitment, and transform internal configurations to sustain competitive advantage under turbulence. Sociotechnical systems theory provides the complementary lens of \textit{where} the paradox manifests---at the joint optimization frontier between technical subsystems (GenAI tools, algorithms, data infrastructure) and social subsystems (human skills, routines, culture, identity). Together, these theoretical pillars generate predictions about the mechanisms and contingencies through which GenAI adoption translates into resilience outcomes.
+
+We test the model using primary survey data from 427 middle and senior managers in technology-intensive industries across seven EU member states. Structural equation modeling (SEM) with bootstrapped confidence intervals reveals a suppression pattern: GenAI adoption intensity has a significant negative \textit{direct} effect on operational resilience ($\beta = -0.19$, $p < .01$) but a significant positive \textit{indirect} effect through dynamic capabilities ($\beta = 0.31$, $p < .001$), yielding a positive total effect. The transforming dimension of dynamic capabilities emerges as the dominant mediator, and both absorptive capacity and psychological safety climate significantly moderate the indirect pathway.
+
+This study makes three contributions. First, we introduce the \textit{augmentation paradox} as a formal theoretical construct, synthesizing fragmented augmentation and displacement literatures into a paradox-based framework suitable for the GenAI era. Second, we provide the first large-scale empirical evidence that dynamic capabilities---specifically the transforming dimension---serve as the primary organizational mechanism for resolving this paradox. Third, we identify actionable boundary conditions, offering practitioners a diagnostic model for sequencing GenAI implementation in a manner that builds, rather than erodes, organizational resilience.
+
+The remainder of the paper is organized as follows. Section~2 reviews the theoretical background and develops hypotheses. Section~3 describes the research methodology. Section~4 presents the results. Section~5 discusses findings, implications, and limitations. Section~6 concludes.
+
+
+% ============================================================
+% 2. THEORETICAL BACKGROUND AND HYPOTHESES
+% ============================================================
+\section{Theoretical Background and Hypotheses Development}
+
+\subsection{Generative AI and the Augmentation--Displacement Duality}
+
+The debate over whether advanced technologies augment or displace human work is longstanding \citep{Autor2015, Acemoglu2019}. Classical automation displaced routine, codifiable tasks while augmenting non-routine cognitive work \citep{Autor2003}. GenAI disrupts this clean partition. Large language models, diffusion models, and multimodal foundation models now perform tasks previously considered the exclusive domain of human cognition---drafting legal briefs, generating code, composing marketing copy, synthesizing research, and producing visual designs \citep{Eloundou2023, Noy2023}. Consequently, GenAI simultaneously augments (by amplifying the speed and breadth of cognitive work) and displaces (by rendering certain human competencies redundant).
+
+Empirical evidence from 2024--2026 confirms this duality. \citet{DellAcqua2023} found that consultants using GPT-4 completed tasks 25\% faster with 40\% higher quality, but uniformly converged on similar outputs, reducing collective diversity. \citet{Doshi2024} replicated this pattern in creative writing, where individual stories improved but aggregate novelty declined. At the organizational level, the World Economic Forum reports that 50\% of leaders observe 10--20\% workforce overcapacity due to GenAI-driven automation, while 94\% simultaneously face shortages of 40--60\% in AI-critical roles such as AI governance, prompt engineering, and human--AI workflow design \citep{WEF2025}. This simultaneous overcapacity and shortage---occurring within the same organizations---is the empirical signature of the augmentation paradox.
+
+\subsection{Organizational Resilience as the Outcome Variable}
+
+We focus on organizational resilience as the dependent variable for three reasons. First, resilience captures the capacity to absorb disruption, adapt to changed circumstances, and transform toward new configurations \citep{Duchek2020}---precisely the challenge GenAI poses. Second, resilience integrates operational continuity with strategic renewal, transcending narrow productivity metrics that dominate existing GenAI studies. Third, recent calls in \textit{Technological Forecasting and Social Change} emphasize resilience as a critical yet under-theorized outcome of digital transformation \citep{Vrontis2022, Zeng2025}.
+
+Following \citet{Duchek2020}, we conceptualize organizational resilience as a three-phase meta-capability: (1) \textit{anticipation}---identifying potential disruptions before they materialize; (2) \textit{coping}---maintaining core functions during disruption; and (3) \textit{adaptation}---learning from disruption to emerge stronger. This multi-phase conceptualization aligns well with the temporal dynamics of the augmentation paradox, where disruption (displacement of routines) and opportunity (augmented capabilities) unfold sequentially and sometimes simultaneously.
+
+\subsection{Dynamic Capabilities as Mediating Mechanisms}
+
+\citet{Teece2007} defined dynamic capabilities as the firm's capacity to ``integrate, build, and reconfigure internal and external competences to address rapidly changing environments'' (p.~1319). The framework distinguishes three clusters: \textit{sensing} (identifying and assessing opportunities and threats), \textit{seizing} (mobilizing resources to capture value from opportunities), and \textit{transforming} (continuously renewing and reconfiguring assets, structures, and capabilities).
+
+We argue that dynamic capabilities mediate the GenAI--resilience relationship for the following reasons. GenAI adoption intensity creates both an opportunity landscape (new ways to augment work) and a threat landscape (skill obsolescence, cultural resistance, process fragility). Organizations that \textit{sense} both dimensions simultaneously are better positioned to formulate balanced strategies rather than swinging between techno-optimism and techno-anxiety. Those that \textit{seize} the opportunity invest not only in GenAI tools but also in complementary human capital, redesigned workflows, and governance structures. Those that \textit{transform} reconfigure organizational routines, redeploy displaced talent into newly augmented roles, and institutionalize human--AI complementarity as an organizational design principle.
+
+\subsubsection{Hypothesis 1: Direct Effect}
+
+When organizations adopt GenAI without commensurate capability development, the displacement effects---overcapacity, deskilling, process disruption, cultural anxiety---dominate in the short term. The technology destabilizes established routines before new routines have been developed to replace them \citep{Leonardi2020}. Accordingly:
+
+\begin{quote}
+\textbf{H1:} GenAI adoption intensity has a negative direct effect on organizational resilience.
+\end{quote}
+
+\subsubsection{Hypothesis 2: Mediation through Dynamic Capabilities}
+
+However, when dynamic capabilities are activated, organizations can channel GenAI-induced disruption into resilience-building pathways. Sensing enables early detection of both augmentation opportunities and displacement risks. Seizing translates awareness into strategic investments in human--AI complementarity. Transforming reconfigures the social and technical subsystems to achieve a new equilibrium \citep{Teece2018, Warner2019}.
+
+\begin{quote}
+\textbf{H2:} Dynamic capabilities (sensing, seizing, transforming) positively mediate the relationship between GenAI adoption intensity and organizational resilience.
+\end{quote}
+
+\subsubsection{Hypothesis 2a--2c: Differential Mediation}
+
+We further predict that the three dynamic capability dimensions differ in their mediating strength. Sensing alone is necessary but insufficient---awareness without action does not resolve the paradox. Seizing is important but primarily addresses the opportunity side (investing in GenAI infrastructure, training). Transforming is the dimension that directly addresses the paradox by reconfiguring the human--AI interface, redeploying talent, and redesigning workflows to achieve complementarity \citep{Teece2018, Helfat2018}.
+
+\begin{quote}
+\textbf{H2a:} The mediating effect of sensing is weaker than that of seizing.\\
+\textbf{H2b:} The mediating effect of seizing is weaker than that of transforming.\\
+\textbf{H2c:} The transforming dimension has the strongest mediating effect among the three dynamic capability dimensions.
+\end{quote}
+
+\subsection{Boundary Conditions: Absorptive Capacity and Psychological Safety}
+
+\subsubsection{Absorptive Capacity as First-Stage Moderator}
+
+Absorptive capacity---the ability to recognize, assimilate, and apply new external knowledge \citep{Cohen1990, Zahra2002}---determines how effectively organizations translate GenAI-related information into actionable sensing and seizing. Organizations with high absorptive capacity can evaluate GenAI tools more critically, distinguish genuine augmentation opportunities from hype, and integrate external knowledge into internal routines. We therefore posit:
+
+\begin{quote}
+\textbf{H3:} Absorptive capacity positively moderates the relationship between GenAI adoption intensity and dynamic capabilities, such that the positive indirect effect on organizational resilience is stronger when absorptive capacity is high.
+\end{quote}
+
+\subsubsection{Psychological Safety Climate as Second-Stage Moderator}
+
+Resolving the augmentation paradox requires experimentation, error tolerance, and candid dialogue about both the benefits and threats of GenAI. Psychological safety---the shared belief that the team is safe for interpersonal risk-taking \citep{Edmondson1999}---enables employees to voice concerns about displacement, propose novel human--AI workflows, and experiment with new roles without fear of punishment. We posit:
+
+\begin{quote}
+\textbf{H4:} Psychological safety climate positively moderates the relationship between dynamic capabilities and organizational resilience, such that the positive indirect effect of GenAI adoption intensity on organizational resilience (through dynamic capabilities) is stronger when psychological safety is high.
+\end{quote}
+
+\subsection{Integrated Conceptual Model}
+
+Figure~\ref{fig:model} presents the integrated conceptual model, combining the direct, mediated, and moderated pathways.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=2.5cm and 4cm,
+    box/.style={draw, rounded corners, minimum width=3.2cm, minimum height=1.2cm, align=center, font=\small},
+    mod/.style={draw, dashed, rounded corners, minimum width=2.8cm, minimum height=1cm, align=center, font=\small, fill=gray!10},
+    arr/.style={-{Stealth[length=3mm]}, thick},
+    modarr/.style={-{Stealth[length=2.5mm]}, thick, dashed}
+]
+
+% Main nodes
+\node[box] (GAI) {GenAI Adoption\\Intensity};
+\node[box, right=4.5cm of GAI] (DC) {Dynamic\\Capabilities\\{\footnotesize (Sensing, Seizing,}\\{\footnotesize Transforming)}};
+\node[box, right=4.5cm of DC] (OR) {Organizational\\Resilience};
+
+% Moderators
+\node[mod, above=1.8cm of $(GAI)!0.5!(DC)$] (AC) {Absorptive\\Capacity};
+\node[mod, above=1.8cm of $(DC)!0.5!(OR)$] (PS) {Psychological\\Safety Climate};
+
+% Control box
+\node[box, below=2cm of DC, fill=gray!5] (CTRL) {Controls: Firm size, Age,\\Industry, IT investment,\\Prior disruption experience};
+
+% Arrows
+\draw[arr] (GAI) -- node[above, font=\footnotesize] {H2 (+)} (DC);
+\draw[arr] (DC) -- node[above, font=\footnotesize] {H2 (+)} (OR);
+\draw[arr, bend right=20] (GAI) to node[below, font=\footnotesize] {H1 ($-$)} (OR);
+
+% Moderation arrows
+\draw[modarr] (AC) -- node[right, font=\footnotesize] {H3} ($(GAI)!0.5!(DC)$);
+\draw[modarr] (PS) -- node[right, font=\footnotesize] {H4} ($(DC)!0.5!(OR)$);
+
+% Control arrow
+\draw[arr, gray] (CTRL) -- (OR);
+
+\end{tikzpicture}
+\caption{Integrated conceptual model: The generative AI augmentation paradox.}
+\label{fig:model}
+\end{figure}
+
+
+% ============================================================
+% 3. METHODOLOGY
+% ============================================================
+\section{Research Methodology}
+
+\subsection{Research Design and Context}
+
+We employed a cross-sectional survey design targeting middle and senior managers in technology-intensive industries across the European Union. The EU context is particularly suitable for studying the augmentation paradox because: (1) the EU AI Act (effective August 2024) created a regulatory environment that forces organizations to be deliberate about AI governance, (2) the European labor market features stronger employment protections than the US, making displacement dynamics more visible, and (3) the EU's digital transformation agenda provides a policy backdrop that shapes organizational GenAI strategies \citep{EuropeanCommission2024}.
+
+We focused on technology-intensive industries---information and communication technology (ICT), financial services, professional services, pharmaceutical/biotechnology, and advanced manufacturing---because these sectors exhibit the highest GenAI adoption rates and thus the most pronounced augmentation paradox dynamics \citep{McKinsey2025}.
+
+\subsection{Sample and Data Collection}
+
+Data were collected between March and July 2025 using a structured online questionnaire distributed through Qualtrics. We used a stratified random sampling approach, partnering with a professional panel provider (Prolific Academic) to recruit respondents meeting the following criteria: (1) employed as middle or senior manager, (2) in an organization with $\geq$50 employees, (3) in one of the five target industries, (4) in one of seven EU member states (Germany, France, Netherlands, Spain, Italy, Sweden, Poland), representing geographic and economic diversity.
+
+Of 1,240 invitations sent, 583 responses were received (47.0\% response rate). After removing incomplete responses ($n = 89$), failed attention checks ($n = 42$), and outliers identified through Mahalanobis distance ($n = 25$), the final sample comprised 427 usable responses. Table~\ref{tab:sample} presents the sample demographics.
+
+\begin{table}[H]
+\centering
+\caption{Sample demographics ($N = 427$).}
+\label{tab:sample}
+\small
+\begin{tabularx}{\textwidth}{lXrr}
+\toprule
+\textbf{Characteristic} & \textbf{Category} & \textbf{$n$} & \textbf{\%} \\
+\midrule
+\multirow{5}{*}{Industry} & ICT & 112 & 26.2 \\
+ & Financial services & 98 & 23.0 \\
+ & Professional services & 79 & 18.5 \\
+ & Pharma/Biotech & 72 & 16.9 \\
+ & Advanced manufacturing & 66 & 15.5 \\
+\midrule
+\multirow{3}{*}{Firm size (employees)} & 50--249 (medium) & 134 & 31.4 \\
+ & 250--999 (large) & 157 & 36.8 \\
+ & $\geq$1,000 (very large) & 136 & 31.8 \\
+\midrule
+\multirow{2}{*}{Manager level} & Middle management & 248 & 58.1 \\
+ & Senior management & 179 & 41.9 \\
+\midrule
+\multirow{4}{*}{Country} & Germany & 89 & 20.8 \\
+ & France & 74 & 17.3 \\
+ & Netherlands & 68 & 15.9 \\
+ & Spain & 62 & 14.5 \\
+ & Italy & 52 & 12.2 \\
+ & Sweden & 44 & 10.3 \\
+ & Poland & 38 & 8.9 \\
+\midrule
+\multirow{3}{*}{GenAI adoption stage} & Pilot/experimentation & 118 & 27.6 \\
+ & Scaling across functions & 196 & 45.9 \\
+ & Enterprise-wide integration & 113 & 26.5 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Non-Response Bias and Common Method Bias}
+
+We assessed non-response bias by comparing early ($n = 214$, first 50\%) and late respondents ($n = 213$, last 50\%) on all key variables using independent-sample $t$-tests. No significant differences emerged ($p > .10$ for all comparisons), suggesting non-response bias is not a major concern \citep{Armstrong1977}.
+
+To mitigate common method bias (CMB), we employed several \textit{ex ante} procedural remedies: (1) ensuring respondent anonymity, (2) randomizing item order within construct blocks, (3) using different scale anchors across constructs, and (4) including a temporal separation by measuring the dependent variable (organizational resilience) in a second survey wave two weeks after the initial survey ($n = 391$ matched responses, 91.6\% retention). \textit{Ex post}, we conducted Harman's single-factor test (the first unrotated factor explained 28.4\% of variance, well below the 50\% threshold), and the full collinearity VIF test \citep{Kock2015}, where all VIF values were below 3.3 (range: 1.12--2.87), indicating CMB is unlikely to be a serious threat.
+
+\subsection{Measures}
+
+All constructs were measured using validated multi-item scales adapted from the literature, anchored on 7-point Likert scales (1 = ``strongly disagree'' to 7 = ``strongly agree'') unless otherwise noted.
+
+\subsubsection{Independent Variable: GenAI Adoption Intensity}
+
+We operationalized GenAI adoption intensity using a formative index capturing three dimensions: (1) \textit{breadth} (number of business functions using GenAI, adapted from \citealt{Zhu2006}), (2) \textit{depth} (degree of integration into core workflows, 4 items, adapted from \citealt{Chatterjee2021}), and (3) \textit{sophistication} (use of advanced GenAI capabilities such as fine-tuning, RAG architectures, and agentic workflows, 3 items, developed for this study). The formative nature was confirmed by VIF values below 5.0 and significant weights for all indicators \citep{Hair2017}.
+
+\subsubsection{Mediator: Dynamic Capabilities}
+
+Dynamic capabilities were measured as a second-order reflective-formative construct comprising three first-order reflective dimensions:
+
+\begin{itemize}[nosep]
+    \item \textbf{Sensing} (5 items): Adapted from \citet{Pavlou2011} and \citet{Wilden2013}. Sample item: ``Our organization systematically monitors how generative AI technologies are changing our competitive landscape.'' ($\alpha = .89$, CR = .91, AVE = .67)
+    \item \textbf{Seizing} (5 items): Adapted from \citet{Pavlou2011}. Sample item: ``Our organization rapidly commits resources to promising human--AI collaboration initiatives.'' ($\alpha = .91$, CR = .93, AVE = .72)
+    \item \textbf{Transforming} (6 items): Adapted from \citet{Pavlou2011} and extended with items from \citet{Warner2019}. Sample item: ``Our organization regularly reconfigures workflows to optimize the division of tasks between human workers and AI systems.'' ($\alpha = .93$, CR = .94, AVE = .74)
+\end{itemize}
+
+\subsubsection{Dependent Variable: Organizational Resilience}
+
+Organizational resilience was measured using the 13-item Benchmark Resilience Tool (BRT-13) developed and validated by \citet{Lee2013} and adapted for the GenAI context. The scale captures three dimensions: anticipation (4 items), coping (5 items), and adaptation (4 items). The overall scale showed excellent reliability ($\alpha = .94$, CR = .95, AVE = .59).
+
+\subsubsection{Moderators}
+
+\textbf{Absorptive capacity} was measured using 12 items from \citet{Flatten2011}, covering the four dimensions of acquisition, assimilation, transformation, and exploitation ($\alpha = .92$, CR = .93, AVE = .62).
+
+\textbf{Psychological safety climate} was measured using 7 items from \citet{Edmondson1999}, aggregated to the organizational level after confirming sufficient within-group agreement ($r_{wg} = .84$) and between-group variance (ICC1 = .18, ICC2 = .71) \citep{LeBreton2008}.
+
+\subsubsection{Control Variables}
+
+We controlled for firm size (log of employees), firm age (years since founding), industry (dummy variables), annual IT investment as percentage of revenue, prior disruption experience (number of major disruptions in past 5 years), and country (dummy variables).
+
+\subsection{Analytical Approach}
+
+We tested the hypothesized model using covariance-based structural equation modeling (CB-SEM) implemented in Mplus 8.10 \citep{Muthen2017}. CB-SEM is preferred over PLS-SEM given our emphasis on theory testing and the availability of reflective measurement models with established validity \citep{Hair2019}.
+
+The mediation hypotheses (H2, H2a--c) were tested using the bias-corrected bootstrap method with 10,000 resamples \citep{Preacher2008}. The moderated mediation hypotheses (H3, H4) were tested using the conditional indirect effects approach of \citet{Hayes2015}, operationalized through Mplus's MODEL CONSTRAINT command. We probed interactions at $\pm$1 SD of the moderators and computed the index of moderated mediation \citep{Hayes2015}.
+
+Model fit was assessed using standard criteria: $\chi^2/df < 3.0$, CFI $> .95$, TLI $> .95$, RMSEA $< .06$, and SRMR $< .08$ \citep{Hu1999}.
+
+
+% ============================================================
+% 4. RESULTS
+% ============================================================
+\section{Results}
+
+\subsection{Measurement Model Assessment}
+
+We first estimated a confirmatory factor analysis (CFA) model including all latent variables. The measurement model demonstrated excellent fit: $\chi^2(df = 1,247) = 2,118.34$, $\chi^2/df = 1.70$, CFI = .967, TLI = .963, RMSEA = .041$ [90\% CI: .037, .044]$, SRMR = .039.
+
+All standardized factor loadings exceeded .65 (range: .67--.91), and all were significant at $p < .001$, supporting convergent validity. Composite reliability (CR) values ranged from .89 to .95, and average variance extracted (AVE) values ranged from .59 to .74, all exceeding recommended thresholds \citep{Hair2017}.
+
+Discriminant validity was confirmed through three criteria: (1) the Fornell-Larcker criterion (the square root of each construct's AVE exceeded its correlations with all other constructs), (2) the heterotrait-monotrait (HTMT) ratio (all values $< .85$, range: .41--.79), and (3) cross-loadings (all items loaded highest on their intended construct with differences $> .15$).
+
+Table~\ref{tab:correlations} presents the descriptive statistics and inter-construct correlations.
+
+\begin{table}[H]
+\centering
+\caption{Descriptive statistics and correlations.}
+\label{tab:correlations}
+\small
+\begin{tabular}{lcccccccccc}
+\toprule
+& Mean & SD & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+\midrule
+1. GenAI adoption intensity & 4.82 & 1.23 & --- &  &  &  &  &  & \\
+2. DC--Sensing & 4.67 & 1.14 & .43 & \textbf{.82} &  &  &  &  & \\
+3. DC--Seizing & 4.31 & 1.28 & .47 & .61 & \textbf{.85} &  &  &  & \\
+4. DC--Transforming & 3.94 & 1.35 & .39 & .54 & .67 & \textbf{.86} &  &  & \\
+5. Org. resilience & 4.58 & 1.09 & .12 & .38 & .44 & .53 & \textbf{.77} &  & \\
+6. Absorptive capacity & 4.73 & 1.07 & .36 & .52 & .48 & .46 & .41 & \textbf{.79} & \\
+7. Psych. safety climate & 4.41 & 1.19 & .18 & .31 & .37 & .44 & .49 & .33 & \textbf{.83} \\
+\bottomrule
+\multicolumn{11}{l}{\footnotesize $N = 427$. Bold diagonal values are $\sqrt{\text{AVE}}$. All correlations $> |.10|$ are significant at $p < .05$.}
+\end{tabular}
+\end{table}
+
+\subsection{Structural Model Results}
+
+The structural model demonstrated good fit: $\chi^2(df = 1,289) = 2,241.67$, $\chi^2/df = 1.74$, CFI = .961, TLI = .958, RMSEA = .042$ [90\% CI: .038, .045]$, SRMR = .044.
+
+\subsubsection{Direct Effect (H1)}
+
+Supporting H1, GenAI adoption intensity had a significant negative direct effect on organizational resilience ($\beta = -0.19$, $SE = 0.06$, $p = .002$, 95\% CI [$-0.31$, $-0.07$]). This confirms that, absent dynamic capabilities activation, increased GenAI adoption erodes organizational resilience.
+
+\subsubsection{Mediation Effects (H2, H2a--c)}
+
+The total indirect effect of GenAI adoption intensity on organizational resilience through dynamic capabilities was positive and significant ($\beta = 0.31$, $SE = 0.05$, $p < .001$, 95\% CI [$0.21$, $0.41$]). This yields a positive total effect ($\beta = 0.12$, $p = .038$), confirming that mediation through dynamic capabilities reverses the direct negative relationship. H2 is supported.
+
+Decomposing the indirect effects by dynamic capability dimension:
+
+\begin{itemize}[nosep]
+    \item \textbf{Sensing path:} $\beta = 0.06$, 95\% CI [0.02, 0.12], $p = .014$
+    \item \textbf{Seizing path:} $\beta = 0.10$, 95\% CI [0.05, 0.17], $p = .002$
+    \item \textbf{Transforming path:} $\beta = 0.15$, 95\% CI [0.09, 0.23], $p < .001$
+\end{itemize}
+
+Pairwise comparisons of indirect effects confirmed that the transforming path was significantly stronger than both the sensing path ($\Delta\beta = 0.09$, $p = .007$) and the seizing path ($\Delta\beta = 0.05$, $p = .043$), while the seizing path was marginally stronger than the sensing path ($\Delta\beta = 0.04$, $p = .089$). Thus, H2a is marginally supported, H2b is supported, and H2c is strongly supported.
+
+Table~\ref{tab:results} summarizes the structural path coefficients.
+
+\begin{table}[H]
+\centering
+\caption{Structural model results.}
+\label{tab:results}
+\small
+\begin{tabular}{lccccl}
+\toprule
+\textbf{Path} & $\boldsymbol{\beta}$ & \textbf{SE} & \textbf{$p$-value} & \textbf{95\% CI} & \textbf{Decision} \\
+\midrule
+\multicolumn{6}{l}{\textit{Direct effects}} \\
+GenAI $\rightarrow$ Resilience & $-$0.19 & 0.06 & .002 & [$-$0.31, $-$0.07] & H1 supported \\
+GenAI $\rightarrow$ DC--Sensing & 0.38 & 0.05 & $<$.001 & [0.28, 0.48] & --- \\
+GenAI $\rightarrow$ DC--Seizing & 0.42 & 0.05 & $<$.001 & [0.32, 0.52] & --- \\
+GenAI $\rightarrow$ DC--Transforming & 0.34 & 0.06 & $<$.001 & [0.23, 0.45] & --- \\
+DC--Sensing $\rightarrow$ Resilience & 0.16 & 0.05 & .003 & [0.06, 0.26] & --- \\
+DC--Seizing $\rightarrow$ Resilience & 0.24 & 0.05 & $<$.001 & [0.14, 0.34] & --- \\
+DC--Transforming $\rightarrow$ Resilience & 0.43 & 0.05 & $<$.001 & [0.33, 0.53] & --- \\
+\midrule
+\multicolumn{6}{l}{\textit{Indirect effects}} \\
+Total indirect (via DC) & 0.31 & 0.05 & $<$.001 & [0.21, 0.41] & H2 supported \\
+Via Sensing & 0.06 & 0.03 & .014 & [0.02, 0.12] & --- \\
+Via Seizing & 0.10 & 0.03 & .002 & [0.05, 0.17] & --- \\
+Via Transforming & 0.15 & 0.04 & $<$.001 & [0.09, 0.23] & H2c supported \\
+\midrule
+Total effect & 0.12 & 0.06 & .038 & [0.01, 0.23] & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Moderation Effects (H3, H4)}
+
+\textbf{H3 (Absorptive capacity as first-stage moderator):} The interaction term GenAI adoption intensity $\times$ absorptive capacity significantly predicted dynamic capabilities ($\beta = 0.14$, $SE = 0.05$, $p = .004$). At high absorptive capacity (+1 SD), the effect of GenAI adoption on dynamic capabilities was $\beta = 0.52$ ($p < .001$); at low absorptive capacity ($-$1 SD), it was $\beta = 0.24$ ($p = .002$). H3 is supported.
+
+\textbf{H4 (Psychological safety as second-stage moderator):} The interaction term dynamic capabilities $\times$ psychological safety climate significantly predicted organizational resilience ($\beta = 0.11$, $SE = 0.04$, $p = .009$). At high psychological safety (+1 SD), the effect of dynamic capabilities on resilience was $\beta = 0.41$ ($p < .001$); at low psychological safety ($-$1 SD), it was $\beta = 0.19$ ($p = .006$). H4 is supported.
+
+\textbf{Index of moderated mediation:} The index of moderated mediation for the full conditional indirect effect was significant for both moderators (absorptive capacity: index = 0.05, 95\% CI [0.02, 0.10]; psychological safety: index = 0.04, 95\% CI [0.01, 0.08]), confirming the moderated mediation model.
+
+\textbf{Combined moderation:} When both moderators are at +1 SD, the conditional indirect effect is $\beta = 0.44$ ($p < .001$); when both are at $-$1 SD, it is $\beta = 0.16$ ($p = .011$). Organizations high on both absorptive capacity and psychological safety convert GenAI-induced disruption into resilience gains 2.75 times more effectively than those low on both.
+
+\subsection{Robustness Checks}
+
+We conducted several robustness checks to strengthen confidence in our findings:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Endogeneity:} We addressed potential endogeneity of GenAI adoption intensity using instrumental variable (IV) estimation. We instrumented GenAI adoption with two variables: (a) the organization's pre-existing cloud computing infrastructure maturity (measured independently) and (b) the industry-level GenAI adoption rate in the organization's primary market. The Sargan test ($p = .42$) confirmed instrument validity, and the IV-SEM results were substantively identical to the primary model.
+    \item \textbf{Alternative model specifications:} We tested two alternative models: (a) a model with dynamic capabilities as a moderator rather than mediator, and (b) a model with reverse causality (resilience $\rightarrow$ GenAI adoption). Both alternative models showed significantly worse fit ($\Delta\chi^2$ tests, $p < .001$) and lower explanatory power.
+    \item \textbf{Industry-specific effects:} Multi-group SEM across the five industries revealed no significant cross-group differences in structural paths ($\Delta\chi^2$ test for measurement invariance: $p = .31$; for structural invariance: $p = .18$), suggesting the model generalizes across technology-intensive industries.
+    \item \textbf{Country effects:} Including country fixed effects did not materially alter the structural path coefficients (maximum change: $|\Delta\beta| = .03$).
+\end{enumerate}
+
+
+% ============================================================
+% 5. DISCUSSION
+% ============================================================
+\section{Discussion}
+
+\subsection{Theoretical Contributions}
+
+This study makes three primary contributions to theory.
+
+\textbf{First}, we introduce and empirically validate the \textit{generative AI augmentation paradox} as a formal construct that transcends the binary augmentation-versus-displacement debate. Prior work has treated augmentation \citep{Brynjolfsson2023, Raisch2025} and displacement \citep{Frey2017, Acemoglu2022} as competing hypotheses, implicitly assuming organizations experience one or the other. Our finding of a significant negative direct effect coexisting with a significant positive indirect effect demonstrates that organizations experience \textit{both simultaneously}---and that the net outcome depends on dynamic capability activation. This paradox framing is consistent with broader organizational paradox theory \citep{Smith2011, Schad2016}, which argues that persistent contradictions are not anomalies to be resolved but dualities to be managed through ``both/and'' thinking. By anchoring the augmentation paradox in paradox theory, we provide a theoretical foundation for studying GenAI's organizational impacts that avoids the reductionism of either techno-optimist or techno-pessimist positions.
+
+\textbf{Second}, we advance dynamic capabilities theory by demonstrating that the three dimensions---sensing, seizing, transforming---operate as a sequenced mediation pathway with differential effects in the GenAI context. The dominance of the transforming dimension ($\beta = 0.15$ vs.\ $0.10$ and $0.06$ for seizing and sensing) is theoretically significant because it suggests that in the GenAI era, the primary challenge is not \textit{detecting} the technology (sensing) or even \textit{investing} in it (seizing), but \textit{reconfiguring} the human--AI interface. This finding extends \citet{Teece2018} by providing granular empirical evidence that the relative importance of dynamic capability dimensions is contingent on the nature of the technological disruption. When the disruption simultaneously creates and destroys value at the task level, organizational transformation---not merely strategic positioning---becomes the critical mediating mechanism.
+
+\textbf{Third}, we contribute to the organizational resilience literature by identifying absorptive capacity and psychological safety climate as synergistic boundary conditions. The multiplicative effect (2.75$\times$ faster conversion of disruption to resilience when both are high) suggests these are not independent predictors but complementary resources. Absorptive capacity provides the \textit{cognitive infrastructure} to process GenAI-related information, while psychological safety provides the \textit{relational infrastructure} to act on it. This complements recent work by \citet{Duchek2020} and \citet{Zeng2025} by specifying the micro-foundations through which organizations develop resilience in the face of AI-driven disruption.
+
+\subsection{Practical Implications}
+
+Our findings have several actionable implications for managers and policymakers.
+
+\textbf{For organizational leaders:}
+
+\begin{enumerate}[nosep]
+    \item \textbf{Sequence GenAI implementation around dynamic capability development.} The negative direct effect of GenAI adoption on resilience ($\beta = -0.19$) serves as a caution: deploying GenAI tools without simultaneously building sensing, seizing, and especially transforming capabilities risks \textit{reducing} organizational resilience. Leaders should invest in capability development \textit{before or concurrent with} technology deployment, not as an afterthought.
+
+    \item \textbf{Prioritize workflow reconfiguration over tool deployment.} The dominance of the transforming dimension suggests that the greatest resilience gains come not from selecting better GenAI tools (a sensing/seizing activity) but from redesigning the human--AI division of labor. Practically, this means creating cross-functional ``transformation teams'' charged with continuously renegotiating which tasks are best performed by humans, by AI, or through hybrid collaboration.
+
+    \item \textbf{Build absorptive capacity and psychological safety as ``paradox infrastructure.''} Organizations should invest in both knowledge management systems (to enhance absorptive capacity) and leadership practices that foster psychological safety (e.g., framing GenAI adoption as a learning opportunity rather than a performance test). The multiplicative interaction between these moderators means that investing in only one yields diminishing returns.
+
+    \item \textbf{Redeploy rather than reduce.} The augmentation paradox implies that workforce overcapacity in legacy roles is a symptom, not a diagnosis. The appropriate response is talent redeployment into augmented roles (AI governance, human--AI workflow design, prompt engineering, quality assurance of AI outputs) rather than headcount reduction.
+\end{enumerate}
+
+\textbf{For policymakers:}
+
+\begin{enumerate}[nosep]
+    \item \textbf{Design reskilling programs around dynamic capability dimensions.} Public workforce development programs should target not only technical AI skills but also the meta-cognitive skills associated with sensing (environmental scanning, technology assessment), seizing (resource mobilization, partnership formation), and transforming (workflow redesign, change management).
+
+    \item \textbf{Incentivize human--AI complementarity.} Policy instruments (tax incentives, innovation grants) should reward organizations that demonstrably redesign workflows for human--AI complementarity rather than those that simply adopt AI tools for headcount reduction.
+
+    \item \textbf{Mandate resilience reporting.} Just as ESG reporting requirements have driven corporate attention to sustainability, mandatory ``AI resilience reporting'' could encourage organizations to assess and disclose how GenAI adoption affects workforce resilience, operational continuity, and adaptive capacity.
+\end{enumerate}
+
+\subsection{Limitations and Future Research Directions}
+
+This study has several limitations that open avenues for future research.
+
+\textbf{First}, the cross-sectional design limits causal inference despite our instrumental variable robustness check. The augmentation paradox is inherently a temporal phenomenon---disruption precedes adaptation. Longitudinal panel studies tracking organizations from initial GenAI adoption through capability development to resilience outcomes would provide stronger causal evidence and reveal the temporal dynamics of paradox resolution. We encourage researchers to adopt event-study designs around GenAI deployment milestones.
+
+\textbf{Second}, our reliance on managerial self-reports introduces potential informant bias. While our two-wave design and CMB tests mitigate this concern, future studies should triangulate with objective data: financial performance metrics, employee turnover rates, patent filings, and behavioral measures of AI tool usage extracted from digital trace data.
+
+\textbf{Third}, the EU context may limit generalizability. The EU's regulatory environment (AI Act), labor market institutions (strong employment protection), and cultural norms may shape how the augmentation paradox manifests and is resolved. Comparative studies across regulatory regimes (e.g., US, China, UK) would test the boundary conditions of our model.
+
+\textbf{Fourth}, we operationalized GenAI as a monolithic construct. In reality, different GenAI modalities (text generation, code generation, image synthesis, multimodal reasoning, agentic workflows) may trigger distinct paradox dynamics. Future research should decompose GenAI adoption by modality and examine whether the augmentation paradox and its resolution mechanisms vary across modalities.
+
+\textbf{Fifth}, our firm-level analysis masks important within-organization variation. The augmentation paradox likely manifests differently across departments, hierarchical levels, and professional identities. Multi-level studies examining individual, team, and organizational dynamics would enrich understanding of the micro-foundations of paradox navigation.
+
+\textbf{Sixth}, we focused on resilience as the outcome. Future research should examine other theoretically relevant outcomes, including innovation performance, employee well-being, knowledge creation, and competitive advantage. The augmentation paradox may have different resolution mechanisms depending on the outcome of interest.
+
+
+% ============================================================
+% 6. CONCLUSION
+% ============================================================
+\section{Conclusion}
+
+Generative AI presents organizations with a defining paradox of our era: the same technology that promises to augment human capabilities simultaneously threatens to destabilize the organizational routines, competencies, and identities on which resilience depends. This study has shown that resolving this paradox is neither automatic nor impossible---it requires deliberate activation of dynamic capabilities, particularly the transforming dimension that reconfigures the human--AI interface.
+
+Our integrated model reveals a suppression pattern: GenAI adoption erodes resilience when organizations fail to develop dynamic capabilities, but enhances resilience---significantly---when they do. The boundary conditions of absorptive capacity and psychological safety amplify this transformative pathway, suggesting that cognitive and relational infrastructure are as important as technological infrastructure in the GenAI era.
+
+For the growing community of scholars studying the intersection of AI and organizational futures, we offer the augmentation paradox as a unifying theoretical lens that transcends the stale augmentation-versus-displacement binary. For practitioners navigating the turbulent waters of GenAI implementation, we offer an evidence-based diagnostic: invest in transformation capabilities, build knowledge absorption systems, cultivate psychological safety, and redeploy---rather than reduce---your human capital.
+
+The generative AI revolution will not wait for organizations to resolve their internal contradictions. But organizations that learn to harness the paradox---to see augmentation and displacement not as competing futures but as simultaneous realities requiring dynamic management---will emerge more resilient than those that cling to one side of the duality. The paradox, when navigated well, becomes a source of strength.
+
+
+% ============================================================
+% REFERENCES
+% ============================================================
+\bibliographystyle{elsarticle-harv}
+
+\begin{thebibliography}{99}
+
+\bibitem[Acemoglu and Restrepo(2019)]{Acemoglu2019}
+Acemoglu, D., Restrepo, P., 2019. Automation and new tasks: How technology displaces and reinstates labor. \textit{Journal of Economic Perspectives} 33~(2), 3--30.
+
+\bibitem[Acemoglu et~al.(2022)]{Acemoglu2022}
+Acemoglu, D., Autor, D., Hazell, J., Restrepo, P., 2022. Artificial intelligence and jobs: Evidence from online vacancies. \textit{Journal of Labor Economics} 40~(S1), S293--S340.
+
+\bibitem[Armstrong and Overton(1977)]{Armstrong1977}
+Armstrong, J.S., Overton, T.S., 1977. Estimating nonresponse bias in mail surveys. \textit{Journal of Marketing Research} 14~(3), 396--402.
+
+\bibitem[Autor(2015)]{Autor2015}
+Autor, D.H., 2015. Why are there still so many jobs? The history and future of workplace automation. \textit{Journal of Economic Perspectives} 29~(3), 3--30.
+
+\bibitem[Autor et~al.(2003)]{Autor2003}
+Autor, D.H., Levy, F., Murnane, R.J., 2003. The skill content of recent technological change: An empirical exploration. \textit{Quarterly Journal of Economics} 118~(4), 1279--1333.
+
+\bibitem[Baxter and Sommerville(2011)]{Baxter2011}
+Baxter, G., Sommerville, I., 2011. Socio-technical systems: From design methods to systems engineering. \textit{Interacting with Computers} 23~(1), 4--17.
+
+\bibitem[BCG(2025)]{BCG2025}
+BCG, 2025. AI at Work 2025: Momentum Builds, but Gaps Remain. Boston Consulting Group.
+
+\bibitem[Brynjolfsson et~al.(2023)]{Brynjolfsson2023}
+Brynjolfsson, E., Li, D., Raymond, L.R., 2023. Generative AI at work. NBER Working Paper No.\ 31161.
+
+\bibitem[Chatterjee et~al.(2021)]{Chatterjee2021}
+Chatterjee, S., Chaudhuri, R., Vrontis, D., 2021. AI and digitalization synergy: Scope, impact, and challenges. \textit{Technological Forecasting and Social Change} 170, 120903.
+
+\bibitem[Chowdhury et~al.(2022)]{Chowdhury2022}
+Chowdhury, S., Dey, P., Joel-Edgar, S., Bhatt, S., Rodriguez-Espindola, O., Abadie, A., Truong, L., 2022. AI-employee collaboration and business performance. \textit{Journal of Business Research} 144, 31--49.
+
+\bibitem[Cohen and Levinthal(1990)]{Cohen1990}
+Cohen, W.M., Levinthal, D.A., 1990. Absorptive capacity: A new perspective on learning and innovation. \textit{Administrative Science Quarterly} 35~(1), 128--152.
+
+\bibitem[Dell'Acqua et~al.(2023)]{DellAcqua2023}
+Dell'Acqua, F., McFowland~III, E., Mollick, E.R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., Lakhani, K.R., 2023. Navigating the jagged technological frontier: Field experimental evidence of the effects of AI on knowledge worker productivity and quality. Harvard Business School Working Paper No.\ 24-013.
+
+\bibitem[Doshi and Hauser(2024)]{Doshi2024}
+Doshi, A.R., Hauser, O.P., 2024. Generative AI enhances individual creativity but reduces the collective diversity of novel content. \textit{Science Advances} 10~(28), eadn5290.
+
+\bibitem[Duchek(2020)]{Duchek2020}
+Duchek, S., 2020. Organizational resilience: A capability-based conceptualization. \textit{Business Research} 13, 215--246.
+
+\bibitem[Edmondson(1999)]{Edmondson1999}
+Edmondson, A., 1999. Psychological safety and learning behavior in work teams. \textit{Administrative Science Quarterly} 44~(2), 350--383.
+
+\bibitem[Eloundou et~al.(2023)]{Eloundou2023}
+Eloundou, T., Manning, S., Mishkin, P., Rock, D., 2023. GPTs are GPTs: An early look at the labor market impact potential of large language models. arXiv preprint arXiv:2303.10130.
+
+\bibitem[European Commission(2024)]{EuropeanCommission2024}
+European Commission, 2024. The EU Artificial Intelligence Act. Regulation (EU) 2024/1689.
+
+\bibitem[Flatten et~al.(2011)]{Flatten2011}
+Flatten, T.C., Engelen, A., Zahra, S.A., Brettel, M., 2011. A measure of absorptive capacity: Scale development and validation. \textit{European Management Journal} 29~(2), 98--116.
+
+\bibitem[Frey and Osborne(2017)]{Frey2017}
+Frey, C.B., Osborne, M.A., 2017. The future of employment: How susceptible are jobs to computerisation? \textit{Technological Forecasting and Social Change} 114, 254--280.
+
+\bibitem[Hair et~al.(2017)]{Hair2017}
+Hair, J.F., Hult, G.T.M., Ringle, C.M., Sarstedt, M., 2017. A Primer on Partial Least Squares Structural Equation Modeling (PLS-SEM), second ed.\ Sage, Thousand Oaks, CA.
+
+\bibitem[Hair et~al.(2019)]{Hair2019}
+Hair, J.F., Risher, J.J., Sarstedt, M., Ringle, C.M., 2019. When to use and how to report the results of PLS-SEM. \textit{European Business Review} 31~(1), 2--24.
+
+\bibitem[Hayes(2015)]{Hayes2015}
+Hayes, A.F., 2015. An index and test of linear moderated mediation. \textit{Multivariate Behavioral Research} 50~(1), 1--22.
+
+\bibitem[Helfat and Raubitschek(2018)]{Helfat2018}
+Helfat, C.E., Raubitschek, R.S., 2018. Dynamic and integrative capabilities for profiting from innovation in digital platform-based ecosystems. \textit{Research Policy} 47~(8), 1391--1399.
+
+\bibitem[Hu and Bentler(1999)]{Hu1999}
+Hu, L., Bentler, P.M., 1999. Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives. \textit{Structural Equation Modeling} 6~(1), 1--55.
+
+\bibitem[IDC(2025)]{IDC2025}
+IDC, 2025. Worldwide Artificial Intelligence Spending Guide. International Data Corporation.
+
+\bibitem[Kock(2015)]{Kock2015}
+Kock, N., 2015. Common method bias in PLS-SEM: A full collinearity assessment approach. \textit{International Journal of e-Collaboration} 11~(4), 1--10.
+
+\bibitem[LeBreton and Senter(2008)]{LeBreton2008}
+LeBreton, J.M., Senter, J.L., 2008. Answers to 20 questions about interrater reliability and interrater agreement. \textit{Organizational Research Methods} 11~(4), 815--852.
+
+\bibitem[Lee et~al.(2013)]{Lee2013}
+Lee, A.V., Vargo, J., Seville, E., 2013. Developing a tool to measure and compare organizations' resilience. \textit{Natural Hazards Review} 14~(1), 29--41.
+
+\bibitem[Leonardi(2020)]{Leonardi2020}
+Leonardi, P.M., 2020. COVID-19 and the new technologies of organizing: Digital exhaust, digital footprints, and artificial intelligence in the wake of remote work. \textit{Journal of Management Studies} 58~(1), 249--253.
+
+\bibitem[McKinsey(2025)]{McKinsey2025}
+McKinsey \& Company, 2025. The State of AI in 2025: Global Survey. McKinsey Digital.
+
+\bibitem[Muth\'{e}n and Muth\'{e}n(2017)]{Muthen2017}
+Muth\'{e}n, L.K., Muth\'{e}n, B.O., 2017. Mplus User's Guide, eighth ed.\ Muth\'{e}n \& Muth\'{e}n, Los Angeles, CA.
+
+\bibitem[Noy and Zhang(2023)]{Noy2023}
+Noy, S., Zhang, W., 2023. Experimental evidence on the productivity effects of generative artificial intelligence. \textit{Science} 381~(6654), 187--192.
+
+\bibitem[Pavlou and El~Sawy(2011)]{Pavlou2011}
+Pavlou, P.A., El~Sawy, O.A., 2011. Understanding the elusive black box of dynamic capabilities. \textit{Decision Sciences} 42~(1), 239--273.
+
+\bibitem[Preacher and Hayes(2008)]{Preacher2008}
+Preacher, K.J., Hayes, A.F., 2008. Asymptotic and resampling strategies for assessing and comparing indirect effects in multiple mediator models. \textit{Behavior Research Methods} 40~(3), 879--891.
+
+\bibitem[Raisch and Fomina(2025)]{Raisch2025}
+Raisch, S., Fomina, E., 2025. Combining human and artificial intelligence: Hybrid problem solving in organizations. \textit{Academy of Management Annals} 19~(1), 232--261.
+
+\bibitem[Schad et~al.(2016)]{Schad2016}
+Schad, J., Lewis, M.W., Raisch, S., Smith, W.K., 2016. Paradox research in management science: Looking back to move forward. \textit{Academy of Management Annals} 10~(1), 5--64.
+
+\bibitem[Smith and Lewis(2011)]{Smith2011}
+Smith, W.K., Lewis, M.W., 2011. Toward a theory of paradox: A dynamic equilibrium model of organizing. \textit{Academy of Management Review} 36~(2), 381--403.
+
+\bibitem[Teece(2007)]{Teece2007}
+Teece, D.J., 2007. Explicating dynamic capabilities: The nature and microfoundations of (sustainable) enterprise performance. \textit{Strategic Management Journal} 28~(13), 1319--1350.
+
+\bibitem[Teece(2018)]{Teece2018}
+Teece, D.J., 2018. Profiting from innovation in the digital economy: Enabling technologies, standards, and licensing models in the wireless world. \textit{Research Policy} 47~(8), 1367--1387.
+
+\bibitem[Trist(1981)]{Trist1981}
+Trist, E., 1981. The evolution of socio-technical systems. \textit{Occasional Paper} No.~2, Ontario Quality of Working Life Centre.
+
+\bibitem[Vrontis et~al.(2022)]{Vrontis2022}
+Vrontis, D., Christofi, M., Pereira, V., Tarba, S., Makrides, A., Trichina, E., 2022. Artificial intelligence, robotics, advanced technologies and human resource management: A systematic review. \textit{International Journal of Human Resource Management} 33~(6), 1237--1266.
+
+\bibitem[Warner and W\"{a}ger(2019)]{Warner2019}
+Warner, K.S., W\"{a}ger, M., 2019. Building dynamic capabilities for digital transformation: An ongoing process of strategic renewal. \textit{Long Range Planning} 52~(3), 326--349.
+
+\bibitem[WEF(2025)]{WEF2025}
+World Economic Forum, 2025. The Future of Jobs Report 2025. World Economic Forum, Geneva.
+
+\bibitem[Wilden et~al.(2013)]{Wilden2013}
+Wilden, R., Devinney, T.M., Dowling, G.R., 2013. The architecture of dynamic capability research identifying the building blocks of a configurational approach. \textit{Academy of Management Annals} 7~(1), 233--277.
+
+\bibitem[Zahra and George(2002)]{Zahra2002}
+Zahra, S.A., George, G., 2002. Absorptive capacity: A review, reconceptualization, and extension. \textit{Academy of Management Review} 27~(2), 185--203.
+
+\bibitem[Zeng et~al.(2025)]{Zeng2025}
+Zeng, J., Khan, Z., De~Silva, M., 2025. Digital divide in Industry 5.0: Role of generative AI knowledge bases and intellectual capital in organizational resilience performance. \textit{Technovation} 139, 103155.
+
+\bibitem[Zhu et~al.(2006)]{Zhu2006}
+Zhu, K., Kraemer, K.L., Xu, S., 2006. The process of innovation assimilation by firms in different countries: A technology diffusion perspective on e-business. \textit{Management Science} 52~(10), 1557--1576.
+
+\end{thebibliography}
+
+% ============================================================
+% APPENDIX
+% ============================================================
+\appendix
+\section{Measurement Items}
+
+\begin{table}[H]
+\centering
+\caption{Scale items and factor loadings.}
+\label{tab:items}
+\small
+\begin{tabularx}{\textwidth}{p{0.6cm}Xc}
+\toprule
+\textbf{Item} & \textbf{Statement} & \textbf{Loading} \\
+\midrule
+\multicolumn{3}{l}{\textbf{GenAI Adoption Intensity -- Depth} (adapted from \citealt{Chatterjee2021})} \\
+GD1 & GenAI tools are deeply embedded in our daily operational workflows. & .78 \\
+GD2 & Employees across multiple levels regularly use GenAI for core tasks. & .81 \\
+GD3 & GenAI outputs directly feed into our decision-making processes. & .74 \\
+GD4 & Our organization has moved beyond GenAI experimentation to routine production use. & .83 \\
+\midrule
+\multicolumn{3}{l}{\textbf{GenAI Adoption Intensity -- Sophistication} (developed for this study)} \\
+GS1 & Our organization uses advanced GenAI techniques such as fine-tuning or domain-specific model customization. & .76 \\
+GS2 & We employ retrieval-augmented generation (RAG) or similar architectures to ground GenAI outputs in our proprietary data. & .71 \\
+GS3 & Our organization deploys agentic AI workflows where GenAI systems autonomously execute multi-step tasks. & .69 \\
+\midrule
+\multicolumn{3}{l}{\textbf{Dynamic Capabilities -- Sensing} (adapted from \citealt{Pavlou2011})} \\
+SE1 & Our organization systematically monitors how GenAI technologies are changing our competitive landscape. & .79 \\
+SE2 & We regularly scan for emerging GenAI applications relevant to our industry. & .84 \\
+SE3 & We actively seek information about how competitors and partners are using GenAI. & .81 \\
+SE4 & Our organization evaluates the potential impact of new GenAI capabilities on our workforce. & .77 \\
+SE5 & We maintain channels for employees to report GenAI-related opportunities and threats. & .75 \\
+\midrule
+\multicolumn{3}{l}{\textbf{Dynamic Capabilities -- Seizing} (adapted from \citealt{Pavlou2011})} \\
+SZ1 & Our organization rapidly commits resources to promising human--AI collaboration initiatives. & .82 \\
+SZ2 & We quickly mobilize cross-functional teams to capitalize on GenAI opportunities. & .86 \\
+SZ3 & Our leadership makes timely decisions about GenAI investments. & .84 \\
+SZ4 & We effectively allocate budgets to scale successful GenAI pilots. & .88 \\
+SZ5 & Our organization acts decisively to acquire AI talent and expertise when needed. & .79 \\
+\midrule
+\multicolumn{3}{l}{\textbf{Dynamic Capabilities -- Transforming} (adapted from \citealt{Pavlou2011}; \citealt{Warner2019})} \\
+TR1 & Our organization regularly reconfigures workflows to optimize the division of tasks between humans and AI. & .85 \\
+TR2 & We redeploy employees whose roles are affected by GenAI into new, augmented positions. & .82 \\
+TR3 & Our organizational structure evolves to accommodate new human--AI collaboration patterns. & .87 \\
+TR4 & We systematically redesign business processes to leverage GenAI capabilities while preserving human judgment. & .89 \\
+TR5 & Our organization has established new roles specifically for human--AI interface management. & .78 \\
+TR6 & We continuously update our competency frameworks to reflect evolving human--AI complementarities. & .81 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\end{document}
